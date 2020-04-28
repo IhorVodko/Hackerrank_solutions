@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/IhorVodko/Hackerrank_solutions/blob/master/Images/Hackerrank_skills.PNG">
+  <img src="https://github.com/IhorVodko/Hackerrank_solutions/blob/master/_Images/Hackerrank_skills.PNG">
 </p>
 
 # Effective Solutions to Hackerrank Coding Problems
