@@ -1,4 +1,4 @@
-#Problem: https://www.hackerrank.com/challenges/revising-the-select-query/problem
+--Problem: https://www.hackerrank.com/challenges/revising-the-select-query/problem
 
 
 SELECT * 
