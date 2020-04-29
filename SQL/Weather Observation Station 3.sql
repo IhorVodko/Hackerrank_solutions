@@ -1,4 +1,4 @@
-#Problam: https://www.hackerrank.com/challenges/weather-observation-station-3/problem
+--Problam: https://www.hackerrank.com/challenges/weather-observation-station-3/problem
 
 
 SELECT distinct CITY
