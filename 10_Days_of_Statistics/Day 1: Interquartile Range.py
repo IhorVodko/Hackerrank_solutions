@@ -21,6 +21,6 @@ def median(nums):
 q1 = median(nums[:(len(nums)//2)])
 q3 = median(nums[-(len(nums)//2):])
 
-solution = q3-q1
+solution = float(q3-q1)
 
 print(round(solution, 1))
