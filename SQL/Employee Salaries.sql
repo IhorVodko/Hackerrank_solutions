@@ -1,1 +1,1 @@
---Problem:
+--Problem: https://www.hackerrank.com/challenges/salary-of-employees/problem
