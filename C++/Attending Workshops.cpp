@@ -15,6 +15,7 @@ struct Available_Workshops {
     int n;
     vector <Workshops> vec_w;
 };
+
 Available_Workshops *initialize(int *start_time, int *duration, int n) {
     Available_Workshops *paw = new Available_Workshops;
     Workshops ws;
@@ -27,6 +28,7 @@ Available_Workshops *initialize(int *start_time, int *duration, int n) {
     }
       return paw;    
 }
+
 bool compare(Workshops w1, Workshops w2) { 
     return (w1.end_time < w2.end_time); 
 }
@@ -36,8 +38,7 @@ int CalculateMaxWorkshops(Available_Workshops *ptr) {
     int prev_end_time = -1;
     int max_workshops = 0;
     for (int i=0; i<ptr->n; ++i) {
-        if (ptr->vec_w.at(i).start_time >= prev_end_time) 
-{
+        if (ptr->vec_w.at(i).start_time >= prev_end_time) {
             prev_end_time = ptr->vec_w.at(i).end_time;
             ++max_workshops;
         }
