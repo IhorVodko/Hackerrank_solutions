@@ -1,0 +1,11 @@
+#Problem: https://www.hackerrank.com/challenges/symmetric-difference/problem
+
+
+num_a = int(input())
+a = set(input().split())
+num_b = int(input())
+b = set(input().split())
+
+sym_dif = a.difference(b).union(b.difference(a))
+
+print(*sorted(list(map(int, sym_dif))), sep = '\n')
