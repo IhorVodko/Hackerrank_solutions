@@ -1,0 +1,6 @@
+#Problem: https://www.hackerrank.com/challenges/py-set-add/problem
+
+
+stamps = {input() for _ in range(int(input()))}
+
+print(len(stamps))
