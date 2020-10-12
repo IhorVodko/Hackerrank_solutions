@@ -1,0 +1,12 @@
+#Problem: https://www.hackerrank.com/challenges/itertools-combinations-with-replacement/problem
+
+
+from itertools import combinations_with_replacement
+
+string, length = input().split()
+string  = sorted(string)
+length = int(length)
+
+comb = map(''.join, combinations_with_replacement(string, length))
+
+print(*comb, sep = '\n')
