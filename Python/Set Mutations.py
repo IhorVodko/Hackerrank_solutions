@@ -8,6 +8,7 @@ for _ in range(int(input())):
     
     operation, num_el = input().split()
     s2 = set(input().split())
-    eval(f"s1.{operation}(s2)")
+#     eval(f"s1.{operation}(s2)")
+    getattr(s1, operation)(s2)
 
 print(sum(map(int, s1)))
