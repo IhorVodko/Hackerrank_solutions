@@ -1,0 +1,18 @@
+#Problem: https://www.hackerrank.com/challenges/py-check-strict-superset/problem
+
+
+#alternitivly use all() and .issuperset()
+A = set(input().split())
+
+ans = 'True'
+for _ in range(int(input())):
+
+    test_set = set(input().split())
+
+    if A.intersection(test_set) != test_set or len(A) <= len(test_set):
+        ans = 'False'
+        break
+    else:
+        continue
+
+print(ans)
