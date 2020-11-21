@@ -1,0 +1,10 @@
+#Problem: https://www.hackerrank.com/challenges/re-findall-re-finditer/problem
+
+
+import re
+
+string = input()
+pattern = r'(?<=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm]{1})[AEIOUaeiou]{2,}(?=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm]{1})'
+matches = re.findall(pattern, string)
+    
+print('\n'.join(matches) if matches else -1)
