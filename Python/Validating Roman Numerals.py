@@ -10,6 +10,4 @@ digit = '(I[VX]|V?I{0,3})'
 
 regex_pattern = re.compile('^' + thousand + hundred+ten+digit +'$')	# Do not delete 'r'
 
-
-import re
 print(str(bool(re.match(regex_pattern, input()))))
