@@ -61,13 +61,8 @@ unsigned casePIsOdd(unsigned n, unsigned s, unsigned p, unsigned q)
 }
 
 
-
-    
-
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-    
-    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */       
     unsigned n,
              s,
              p,
