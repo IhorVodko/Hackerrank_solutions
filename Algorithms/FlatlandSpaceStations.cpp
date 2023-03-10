@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
 #include <algorithm>
 #include <cstdlib>
 
@@ -17,14 +18,14 @@ int flatlandSpaceStations (
 {
     int countOfCitiesWthSttns = _citiesWithStations.size();
     
-    if ( _numOfCities == countOfCitiesWthSttns )
+    if ( countOfCitiesWthSttns == _numOfCities )
     {
         return 0;
-    }
-    
-    if( countOfCitiesWthSttns == 1 )
+    } 
+    else if ( countOfCitiesWthSttns == 1 )
     { 
         auto const & numOfCityWthSttn = _citiesWithStations.front();
+        
         if (  
                 numOfCityWthSttn == 0 
             ||  numOfCityWthSttn == _numOfCities - 1    
@@ -41,7 +42,7 @@ int flatlandSpaceStations (
         }
     }    
 
-    std::sort( std::begin( _citiesWithStations ), std::end( _citiesWithStations ) );
+    std::sort( _citiesWithStations.begin(), _citiesWithStations.end() );
     
     bool 
             isFirstInserted = false
@@ -50,7 +51,7 @@ int flatlandSpaceStations (
             
     if ( _citiesWithStations.front() != 0 )
     {
-        _citiesWithStations.insert( std::begin( _citiesWithStations ), 0 );
+        _citiesWithStations.insert( _citiesWithStations.begin(), 0 );
         isFirstInserted = true;
     }
     
@@ -60,29 +61,25 @@ int flatlandSpaceStations (
         isLastInserted = true;
     }
     
+    std::set< int > distances;
+    
+    std::adjacent_difference( 
+            _citiesWithStations.cbegin()
+        ,   _citiesWithStations.cend()
+        ,   std::inserter( distances, distances.end() ) 
+    );
+    
     int 
-            currentMaxNearestDistance = 0
-        ,   currentNearestDistance = 0
-    ;
-    
-    auto itBeforeLast = std::end( _citiesWithStations ) - 1;
-    
-    for( auto itFirst = std::begin( _citiesWithStations ); itFirst != itBeforeLast; ++itFirst )
-    {
-        currentNearestDistance = *( itFirst + 1 ) - *itFirst;
-        
-        if ( currentNearestDistance > currentMaxNearestDistance )
-        {
-            currentMaxNearestDistance = currentNearestDistance;
+            result { *distances.crbegin() / 2 }
+        ,   lastDistance {      
+                    *( _citiesWithStations.cend() - 1 ) 
+                -   *( _citiesWithStations.cend() - 2 )
+            }    
+        ,   firstDistance {
+                    *( _citiesWithStations.cbegin() + 1 )
+                -   *_citiesWithStations.cbegin()
         }
-    }
-    
-    int result = currentMaxNearestDistance / 2;
-    int lastDistance = *itBeforeLast - *( itBeforeLast - 1 );
-    
-    auto citFirst = std::begin( _citiesWithStations );
-    
-    int firstDistance = *( citFirst + 1 ) -  *citFirst;
+    ;
     
     if ( isFirstInserted && isLastInserted )
     {    
