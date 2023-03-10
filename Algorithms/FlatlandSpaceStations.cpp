@@ -56,7 +56,7 @@ int flatlandSpaceStations (
     
     if ( _citiesWithStations.back() !=  countOfCitiesWthSttns - 1 )
     {
-        _citiesWithStations.emplace_back( countOfCitiesWthSttns - 1 );
+        _citiesWithStations.emplace_back( _numOfCities - 1 );
         isLastInserted = true;
     }
     
@@ -65,11 +65,11 @@ int flatlandSpaceStations (
         ,   currentNearestDistance = 0
     ;
     
-    auto citBeforeLast = std::cend( _citiesWithStations ) - 1;
+    auto itBeforeLast = std::end( _citiesWithStations ) - 1;
     
-    for( auto citFirst = std::cbegin( _citiesWithStations ); citFirst != citBeforeLast; ++citFirst )
+    for( auto itFirst = std::begin( _citiesWithStations ); itFirst != itBeforeLast; ++itFirst )
     {
-        currentNearestDistance = *( citFirst + 1 ) - *citFirst;
+        currentNearestDistance = *( itFirst + 1 ) - *itFirst;
         
         if ( currentNearestDistance > currentMaxNearestDistance )
         {
@@ -78,9 +78,9 @@ int flatlandSpaceStations (
     }
     
     int result = currentMaxNearestDistance / 2;
-    int lastDistance = *citBeforeLast - *( citBeforeLast - 1 );
+    int lastDistance = *itBeforeLast - *( itBeforeLast - 1 );
     
-    auto citFirst = std::cbegin( _citiesWithStations );
+    auto citFirst = std::begin( _citiesWithStations );
     
     int firstDistance = *( citFirst + 1 ) -  *citFirst;
     
@@ -102,7 +102,6 @@ int flatlandSpaceStations (
     }
     
 }
-
 
 int main()
 {
