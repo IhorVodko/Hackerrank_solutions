@@ -11,7 +11,7 @@ namespace {
     constexpr char const * NO = "NO";
 }
 
-string fairRations(const vector<int> &input) {
+std::string fairRations(const std::vector<int> &input) {
     const auto IsEven = [&](int num){return !(num % 2);};
     std::bitset<::MAX_SIZE_OF_QUEUE> queue;
     size_t begin = 0; 
