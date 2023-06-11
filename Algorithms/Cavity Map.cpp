@@ -7,20 +7,20 @@
 vector<string> cavityMap(vector<string> grid) {
     static constexpr char kX = 'X'; 
     static constexpr size_t kOne = 1;
-    if (grid.size() < 3) 
-    {
+    const auto rows = grid.size() - kOne;
+    if (!rows) {
         return grid;
-    } 
-    size_t current_col = kOne;
-    for (auto itRow = ++grid.begin(); itRow != --grid.end(); ++itRow) {
-        for (auto itCol = ++(*itRow).begin(); itCol != --(*itRow).end(); ++itCol, ++current_col) {
-            if (*itCol > *(itCol-kOne) && *itCol > *(itCol+kOne) && 
-                *itCol > (*(itRow-kOne)).at(current_col) && *itCol > (*(itRow+kOne)).at(current_col)) {
-               *itCol = kX;
+    }
+    const auto columns = grid.front().size() - kOne;
+    int temp = 0;
+    for (auto row = kOne; row != rows; ++row) {
+        for (auto column = kOne; column != columns; ++column) {
+            temp = grid.at(row).at(column);
+            if (temp > grid.at(row).at(column - kOne) && temp > grid.at(row).at(column + kOne) && 
+                temp > grid.at(row - kOne).at(column) &&  temp > grid.at(row + kOne).at(column)) {
+               grid.at(row).at(column) = kX;
             }
         }
-        current_col = kOne;
     }
- 
     return grid;
 }
