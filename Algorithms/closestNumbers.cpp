@@ -1,6 +1,3 @@
-// problem : https://www.hackerrank.com/challenges/closest-numbers/problem?isFullScreen=true
-
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -17,7 +14,6 @@ vector<string> split(const string &);
  */
 
 // #include <algorithm>
-// #include <map>
 // #include <vector>
 // #include <utility>
 
@@ -25,12 +21,22 @@ vector<string> split(const string &);
 
 std::vector<int> closestNumbers(std::vector<int> _v) {
     std::sort(_v.begin(), _v.end());
-    std::map<int, std::vector<int>> diff;
+    auto minDiff = std::make_pair(
+            std::numeric_limits<int>::max()
+        ,   std::vector<int>()
+    );
+    int diff = 0;
     for(auto it = _v.cbegin(); it != _v.cend() - 1; ++it){
-        auto & vecTemp = diff[std::abs(*it - *(it + 1))];
-        vecTemp.insert(vecTemp.end(), it, it + 2);
+        diff = std::abs(*it - *(it + 1));
+        if(minDiff.first == diff){
+            minDiff.second.insert(minDiff.second.end(), it, it + 2);
+        }else if(minDiff.first > diff){
+            minDiff.first = diff;
+            minDiff.second.clear();
+            minDiff.second.insert(minDiff.second.end(), it, it + 2);
+        }
     }
-    return (*diff.begin()).second;
+    return minDiff.second;
 }
 
 int main()
