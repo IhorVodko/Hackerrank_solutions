@@ -28,11 +28,13 @@ std::vector<int> closestNumbers(std::vector<int> _v) {
     int diff = 0;
     for(auto it = _v.cbegin(); it != _v.cend() - 1; ++it){
         diff = std::abs(*it - *(it + 1));
-        if(minDiff.first == diff){
-            minDiff.second.insert(minDiff.second.end(), it, it + 2);
-        }else if(minDiff.first > diff){
-            minDiff.first = diff;
-            minDiff.second.clear();
+        if(minDiff.first < diff){
+            continue;
+        }else{
+            if(minDiff.first > diff){
+                minDiff.first = diff;
+                minDiff.second.clear();
+            }
             minDiff.second.insert(minDiff.second.end(), it, it + 2);
         }
     }
