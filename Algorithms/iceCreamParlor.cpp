@@ -38,7 +38,6 @@ std::vector<int> icecreamParlor(
                 {static_cast<int>(std::distance(_flavors.cbegin(), it)) + 1,
                     static_cast<int>(std::distance(_flavors.cbegin(),
                         itFind)) + 1});
-            std::sort(result.begin(), result.end());
             return result;
         }
     }
