@@ -33,12 +33,9 @@ std::vector<int> icecreamParlor(
         if( auto itFind = std::find(it + 1, _flavors.cend(), _money - *it);
             itFind != _flavors.cend()
         ){
-            std::vector<int> result;
-            result.insert(result.end(),
-                {static_cast<int>(std::distance(_flavors.cbegin(), it)) + 1,
+            return {static_cast<int>(std::distance(_flavors.cbegin(), it)) + 1,
                     static_cast<int>(std::distance(_flavors.cbegin(),
-                        itFind)) + 1});
-            return result;
+                        itFind)) + 1};
         }
     }
     return {-1, -1};
