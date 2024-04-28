@@ -26,17 +26,19 @@ void almostSorted(std::vector<int> & _nums){
     auto numsSorted = _nums;
     sort(std::begin(numsSorted), std::end(numsSorted));
     for(size_t a = 0; a < sz; ++a){
-        if(_nums.at(a) != numsSorted.at(a)){
-            indxs.emplace_back(a);
+        if(_nums.at(a) == numsSorted.at(a)){
+            continue;
         }
+        indxs.emplace_back(a);
     }
     for(auto a1 = crbegin(indxs), a2 = --crend(indxs);a1 <= a2;
         ++a1, --a2
     ){
-        if(_nums.at(*a1) != numsSorted.at(*a2)){
-            std::cout << "no\n";
-            return;
+        if(_nums.at(*a1) == numsSorted.at(*a2)){
+            continue;
         }
+        std::cout << "no\n";
+        return;
     }
     std::cout << "yes" << '\n';
     if(indxs.empty()){
